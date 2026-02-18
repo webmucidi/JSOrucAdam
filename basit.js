@@ -15,14 +15,22 @@ const imsakiye=[
     "iftar": "18:51"
 }
 ];
+
+const seciliGun=document.querySelector("#slctGun");
+const iftarVakti=document.querySelector(".iftar");
+
 for(let i=0;i<imsakiye.length;i++){
-    let tarih=imsakiye[i].tarih;
+    let secilen=imsakiye[i];
     const gun=document.createElement("option");
-    gun.textContent=tarih;
-    document.querySelector("#slctGun").appendChild(gun);
+    gun.value=secilen.iftar;
+    gun.textContent=secilen.tarih;
+    seciliGun.appendChild(gun);
+}""
 
-}
-
+seciliGun.addEventListener("change",function(){
+    let iftarSaati=this.value;
+    iftarVakti.textContent=iftarSaati;
+});
 
 
 
