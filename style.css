@@ -1,0 +1,127 @@
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{
+  font-family: Arial, sans-serif;
+  background:#f3f7fb;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:22px;
+}
+
+.app{ width:min(560px, 96vw); }
+.ust{ margin-bottom:14px; }
+h1{ font-size:24px; margin-bottom:6px; }
+.alt{ color:#6b7280; }
+
+.panel{ display:grid; gap:12px; }
+
+.etiket{ font-weight:700; }
+select{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+}
+
+.kart{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  overflow:hidden;
+}
+
+.kart-ust{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:12px;
+}
+.kucuk{ color:#6b7280; margin-top:4px; }
+
+.rozet{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  background:#e5e7eb;
+}
+
+.gorsel{
+  height:120px;
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  align-items:flex-end;
+  margin-bottom:14px;
+  transition: filter .4s ease;
+  color:white;
+  background: linear-gradient(135deg, #1f2937, #2563eb);
+  position:relative;
+  overflow:hidden;
+}
+.gorsel::before{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 55%);
+  transform: rotate(8deg);
+}
+.gorsel-icerik{
+  position:relative;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.ay{ font-size:34px; }
+.baslik{ font-weight:800; font-size:18px; }
+.mini{ opacity:.9; font-size:13px; }
+
+.vakitler{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  margin-bottom:14px;
+}
+.vakit{
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:12px;
+  background:#f9fafb;
+}
+.vakit-ad{ color:#6b7280; font-size:13px; }
+.vakit-saat{ font-size:22px; font-weight:800; margin-top:4px; }
+
+.hadis{
+  border-left:4px solid #2563eb;
+  padding:10px 12px;
+  background:#eef2ff;
+  border-radius:10px;
+  margin-bottom:14px;
+  line-height:1.5;
+}
+.tirnak{ font-size:22px; font-weight:800; margin-right:6px; }
+
+.bayram{
+  border-top:1px dashed #e5e7eb;
+  padding-top:12px;
+}
+.bayram-ust{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+}
+.bar{
+  height:14px;
+  background:#e5e7eb;
+  border-radius:999px;
+  overflow:hidden;
+}
+.barDol{
+  height:100%;
+  width:0%;
+  transition: width .7s ease;
+  background:#22c55e;
+}

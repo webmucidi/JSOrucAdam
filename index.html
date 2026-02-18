@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>İmsakiye Kartı</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="app">
+    <header class="ust">
+      <h1>🕌 Ramazan İmsakiye Kartı</h1>
+      <p class="alt">Gün seç → imsak/iftar + hadis + bayrama kalan bar.</p>
+    </header>
+
+    <section class="panel">
+      <label class="etiket">Gün seç</label>
+      <select id="gunSec"></select>
+
+      <div class="kart" id="kart">
+        <div class="kart-ust">
+          <div>
+            <h2 id="miladi">-</h2>
+            <p id="ramazanGun" class="kucuk">-</p>
+          </div>
+          <span id="rozet" class="rozet">-</span>
+        </div>
+
+        <div class="gorsel" id="gorsel">
+          <div class="gorsel-icerik">
+            <div class="ay">☪</div>
+            <div>
+              <div class="baslik" id="sehir">Örnek Şehir</div>
+              <div class="mini">İmsakiye</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vakitler">
+          <div class="vakit">
+            <div class="vakit-ad">🌙 İmsak</div>
+            <div class="vakit-saat" id="imsak">--:--</div>
+          </div>
+          <div class="vakit">
+            <div class="vakit-ad">🍽️ İftar</div>
+            <div class="vakit-saat" id="iftar">--:--</div>
+          </div>
+        </div>
+
+        <blockquote class="hadis">
+          <span class="tirnak">“</span>
+          <span id="hadisMetin">-</span>
+        </blockquote>
+
+        <div class="bayram">
+          <div class="bayram-ust">
+            <span>🎉 Bayrama Kalan</span>
+            <b id="kalanYazi">-</b>
+          </div>
+          <div class="bar">
+            <div id="barDol" class="barDol"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
