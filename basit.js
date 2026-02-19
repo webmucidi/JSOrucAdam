@@ -16,12 +16,12 @@ const imsakiye=[
 }
 ];
 
-
-
 // HTML DOM elementlerini seç
 const seciliGun=document.querySelector("#slctGun");
 const sonuc=document.querySelector(".iftar");
+const enerjiBar = document.querySelector("#enerji");
 
+// İmsakiye verilerinden ilk günün iftar saatini al ve ekrana yazdır
 let secilen=imsakiye[0];
 let iftarSaati=secilen.iftar;
 sonuc.textContent=iftarSaati;
@@ -67,6 +67,21 @@ function iftaraKalanSure(){
 
     //Sonucu ekrana yazdırıyoruz
     sonuc.innerHTML+=`<br>İftara kalan süre: ${farkGun} gün ${farkSaati} saat ${farkDakika} dakika`;
+
+    // Enerji barını güncelliyoruz
+    if(farkGun>0){
+        enerjiBar.style.width="100%";
+        enerjiBar.style.backgroundColor="green";
+    } else{ 
+        let oran=(farkSaati/iftarSaati)*100;
+        enerjiBar.style.width=oran+"%";
+        if(oran<50){
+            enerjiBar.style.backgroundColor="orange";
+        }
+        console.log(oran);
+    }
+
+    
 }
 
 
