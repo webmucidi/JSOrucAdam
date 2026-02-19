@@ -23,10 +23,10 @@ const enerjiBar = document.querySelector("#enerji");
 
 // İmsakiye verilerinden ilk günün iftar saatini al ve ekrana yazdır
 let secilen=imsakiye[0];
-let iftarSaati=secilen.iftar;
-let imsakSaati=secilen.imsak;
+let iftarVakti=secilen.iftar;
+let imsakVakti=secilen.imsak;
 
-sonuc.textContent=iftarSaati;
+sonuc.textContent=iftarVakti;
 
 // İmsakiye verilerini kullanarak dropdown menüsünü doldur
 for(let i=0;i<imsakiye.length;i++){
@@ -41,8 +41,8 @@ iftaraKalanSure();
 
 // Dropdown menüsünde bir gün seçildiğinde iftar vaktini güncelle
 seciliGun.addEventListener("change",function(){
-    iftarSaati=this.value;
-    sonuc.textContent=iftarSaati;
+    iftarVakti=this.value;
+    sonuc.textContent=iftarVakti;
     iftaraKalanSure();
     
 });
@@ -58,8 +58,8 @@ function iftaraKalanSure(){
     let sadeceDakika=sistemTarihi.getMinutes();
     
     // Seçilen günün iftar saatini,dakikasını ve gününü alıyoruz
-    let iftarSaati=Number(seciliGun.value.split(":")[0]);
-    let iftarDakika=Number(seciliGun.value.split(":")[1]);
+    let iftarSaati=Number(iftarVakti.split(":")[0]);
+    let iftarDakika=Number(iftarVakti.split(":")[1]);
     let iftarGun=Number(seciliGun.options[seciliGun.selectedIndex].textContent.split("-")[2]);
 
     // İftara kalan süreyi hesaplıyoruz
@@ -68,24 +68,29 @@ function iftaraKalanSure(){
     let farkGun=iftarGun-sadeceGun;
 
     //Sonucu ekrana yazdırıyoruz
-    sonuc.innerHTML+=`<br>İftara kalan süre: ${farkGun} gün ${farkSaati} saat ${farkDakika} dakika`;
+    sonuc.innerHTML+=`<br>İftara kalan süre: ${farkGun} gün ${farkSaati} saat ${farkDakika} dakika. `;
 
     // Enerji barını güncelliyoruz
-    imsakSaati=Number(imsakSaati.split(":")[0]);
-
+    let imsakSaati=Number(imsakVakti.split(":")[0]);
     let orucSaati=iftarSaati-imsakSaati;
 
     if(farkGun>0){
         enerjiBar.style.width="100%";
         enerjiBar.style.backgroundColor="green";
+        document.querySelector(".yuzde").textContent="Daha başlamadı bile!";
     } else{ 
         let oran=(farkSaati/orucSaati)*100;
         enerjiBar.style.width=oran+"%";
+
         if(oran<50){
             enerjiBar.style.backgroundColor="orange";
         }
-        console.log(oran);
+
+        document.querySelector(".yuzde").textContent=Math.round(100-oran)+"%  gitti ha gayret!";
+
     }
+
+
 
     
 }
