@@ -22,18 +22,24 @@ const imsakiye=[
 const seciliGun=document.querySelector("#slctGun");
 const sonuc=document.querySelector(".iftar");
 
+let secilen=imsakiye[0];
+let iftarSaati=secilen.iftar;
+sonuc.textContent=iftarSaati;
+
 // İmsakiye verilerini kullanarak dropdown menüsünü doldur
 for(let i=0;i<imsakiye.length;i++){
-    let secilen=imsakiye[i];
+    secilen=imsakiye[i];
     const gun=document.createElement("option");
     gun.value=secilen.iftar;
     gun.textContent=secilen.tarih;
     seciliGun.appendChild(gun);
 }
 iftaraKalanSure();
+
+
 // Dropdown menüsünde bir gün seçildiğinde iftar vaktini güncelle
 seciliGun.addEventListener("change",function(){
-    let iftarSaati=this.value;
+    iftarSaati=this.value;
     sonuc.textContent=iftarSaati;
     iftaraKalanSure();
     
@@ -41,15 +47,26 @@ seciliGun.addEventListener("change",function(){
 
 //İftara ne kadar kaldığını gösteren fonksiyonu tanımladık
 function iftaraKalanSure(){
+    // Sistem tarihini alıyoruz
     let sistemTarihi=new Date();
+
+    // Sistem tarihinden sadece gün, saat ve dakikayı alıyoruz
+    let sadeceGun=sistemTarihi.getDate();
     let sadeceSaat=sistemTarihi.getHours();
+    let sadeceDakika=sistemTarihi.getMinutes();
     
-
+    // Seçilen günün iftar saatini,dakikasını ve gününü alıyoruz
     let iftarSaati=Number(seciliGun.value.split(":")[0]);
- 
-    let fark=iftarSaati-sadeceSaat;
+    let iftarDakika=Number(seciliGun.value.split(":")[1]);
+    let iftarGun=Number(seciliGun.options[seciliGun.selectedIndex].textContent.split("-")[2]);
 
-    sonuc.innerHTML+=`<br>İftara kalan süre: ${fark} saat`;
+    // İftara kalan süreyi hesaplıyoruz
+    let farkSaati=iftarSaati-sadeceSaat;
+    let farkDakika=iftarDakika-sadeceDakika;
+    let farkGun=iftarGun-sadeceGun;
+
+    //Sonucu ekrana yazdırıyoruz
+    sonuc.innerHTML+=`<br>İftara kalan süre: ${farkGun} gün ${farkSaati} saat ${farkDakika} dakika`;
 }
 
 
